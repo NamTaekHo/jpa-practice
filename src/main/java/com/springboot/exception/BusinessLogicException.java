@@ -1,7 +1,13 @@
 package com.springboot.exception;
 
+import lombok.Getter;
+
 public class BusinessLogicException extends RuntimeException {
-    public BusinessLogicException(String message) {
-        super(message);
+    @Getter
+    private ExceptionCode exceptionCode;
+
+    public BusinessLogicException(ExceptionCode exceptionCode) {
+        super(exceptionCode.getMessage());
+        this.exceptionCode = exceptionCode;
     }
 }
