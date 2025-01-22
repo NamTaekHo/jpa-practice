@@ -40,14 +40,11 @@ public class Member extends BaseEntity {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Order> orders = new ArrayList<>();
 
-    public void setOrders(Order order){
+    public void setOrder(Order order){
         if(order.getMember() != this){
             order.setMember(this);
         }
         this.orders.add(order);
-        this.getStamp().setStampCount(
-                order.getOrderCoffees().stream().mapToInt(orderCoffee -> orderCoffee.getQuantity()).sum()
-        );
     }
 
     public Member(String email){
@@ -73,10 +70,5 @@ public class Member extends BaseEntity {
         }
     }
 
-//    @Column(nullable = false)
-//    private LocalDateTime createdAt = LocalDateTime.now();
-//
-//    @Column(nullable = false, name = "LAST_MODIFIED_AT")
-//    private LocalDateTime modifiedAt = LocalDateTime.now();
 
 }

@@ -1,7 +1,7 @@
-package com.springboot.coffee.entity;
+package com.springboot.order.entity;
 
+import com.springboot.coffee.entity.Coffee;
 import com.springboot.config.BaseEntity;
-import com.springboot.order.entity.Order;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,10 +32,7 @@ public class OrderCoffee extends BaseEntity {
     public void setOrder(Order order){
         this.order = order;
         if(!order.getOrderCoffees().contains(this)){
-            order.setOrderCoffee(this);
+            order.getOrderCoffees().add(this);
         }
     }
-
-
-
 }

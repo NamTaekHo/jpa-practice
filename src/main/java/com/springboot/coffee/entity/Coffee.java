@@ -1,6 +1,7 @@
 package com.springboot.coffee.entity;
 
 import com.springboot.config.BaseEntity;
+import com.springboot.order.entity.OrderCoffee;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -44,4 +45,6 @@ public class Coffee extends BaseEntity {
             this.status = status;
         }
     }
+
+
 }

@@ -21,7 +21,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/v12/members")
 @Validated
-@Log4j
 public class MemberController {
     private final MemberService memberService;
     private final MemberMapper mapper;

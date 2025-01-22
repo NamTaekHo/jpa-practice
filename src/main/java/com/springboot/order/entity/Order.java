@@ -1,6 +1,5 @@
 package com.springboot.order.entity;
 
-import com.springboot.coffee.entity.OrderCoffee;
 import com.springboot.config.BaseEntity;
 import com.springboot.member.entity.Member;
 import lombok.Getter;
@@ -34,7 +33,7 @@ public class Order extends BaseEntity {
     public void setMember(Member member){
         this.member = member;
         if(!member.getOrders().contains(this)){
-            member.setOrders(this);
+            member.setOrder(this);
         }
     }
 
@@ -42,8 +41,10 @@ public class Order extends BaseEntity {
         if(orderCoffee.getOrder() != this){
             orderCoffee.setOrder(this);
         }
-        this.orderCoffees.add(orderCoffee);
+        orderCoffees.add(orderCoffee);
     }
+
+
 
     public enum OrderStatus {
         ORDER_REQUEST(1, "주문 요청"),

@@ -66,9 +66,12 @@ public class CoffeeService {
     }
 
     // DB에 같은 커피코드 존재하는지 확인하는 메서드
-    private void verifyExistCoffeeCode(String coffeeCode) {
+    public void verifyExistCoffeeCode(String coffeeCode) {
         // DB에서 커피코드 존재하는지 확인하고 없으면 예외처리
-        coffeeRepository.findByCoffeeCode(coffeeCode).orElseThrow(() -> new BusinessLogicException(ExceptionCode.COFFEE_CODE_EXISTS));
+        Optional<Coffee> coffee = coffeeRepository.findByCoffeeCode(coffeeCode);
+        if(coffee.isPresent()){
+            throw new BusinessLogicException(ExceptionCode.COFFEE_CODE_EXISTS);
+        }
     }
 
     // coffeeId가 존재하는지 확인 후 존재하면 반환, 존재하지 않으면 예외발생
